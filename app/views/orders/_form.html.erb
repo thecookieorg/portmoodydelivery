@@ -1,0 +1,13 @@
+<%= simple_form_for(@order) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%# f.input :pay_type %>
+    <%= f.select :pay_type, Order::PAYMENT_TYPES,
+    			  prompt: 'Select a payment method' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
