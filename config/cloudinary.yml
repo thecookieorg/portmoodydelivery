@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: manoylo
+  api_key: '242496179242327'
+  api_secret: TYALcYTpuwmxuti-Y-eHn1hicJs
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: manoylo
+  api_key: '242496179242327'
+  api_secret: TYALcYTpuwmxuti-Y-eHn1hicJs
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: manoylo
+  api_key: '242496179242327'
+  api_secret: TYALcYTpuwmxuti-Y-eHn1hicJs
+  enhance_image_tag: true
+  static_image_support: false
