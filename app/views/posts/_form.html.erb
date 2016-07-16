@@ -5,7 +5,7 @@
     <%= f.input :title %>
     <%= f.label "Add Image" %>
     <%= f.file_field :bimage, required: false, class: "form-control" %><br>
-    <%= f.input :body %>
+    <%= f.input :body, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} } %>
     <%= f.input :keywords %>
   </div>
 
