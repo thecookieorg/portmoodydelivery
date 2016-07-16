@@ -33,6 +33,8 @@ gem 'cloudinary'
 gem 'friendly_id', '~> 5.1.0'
 gem 'meta-tags'
 gem 'ckeditor'
+gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
+gem 'figaro'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

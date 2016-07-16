@@ -12,7 +12,9 @@ class Cart < ActiveRecord::Base
 	end
 
 	def total_price
-		line_items.to_a.sum { |item| item.total_price }
+		tax = 0.05
+		summary = line_items.to_a.sum { |item| item.total_price }
+		total_price = (tax * summary) + summary
 	end
 
 end

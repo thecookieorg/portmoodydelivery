@@ -1,13 +1,61 @@
+<div class="container">
 <%= simple_form_for(@order) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%# f.input :pay_type %>
-    <%= f.select :pay_type, Order::PAYMENT_TYPES,
-    			  prompt: 'Select a payment method' %>
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group" style="margin-bottom: 30px;">
+      <%# f.input :pay_type %>
+      <%= f.select :pay_type, Order::PAYMENT_TYPES,
+             allow_blank: false, class: "form-control" %>
+    </div>
+    <div class="form-group" style="margin-bottom: 30px; margin-top: 30px;">
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        <%= f.hidden_field :stripe_card_token %>
+         <%= label_tag 'amount', 'Your Cart Total Is:', class: 'amount' %>
+         <%= label_tag 'amount', "$#{@cart.total_price}", class: 'amount-figure' %>
+      </article>
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+      data-description="Port Moody Delivery"
+      data-amount="<%= @cart.total_price * 100 %>"
+      data-email="<%= current_user.email %>">
+      </script>
+      
+      <%# f.input :address, autofocus: true, class: "form-control", label: "Delivery Address", placeholder: "Please enter full address, with zip code and appartment number" %>
+    </div>
   </div>
+
+
+<hr>
+
+<div class="row">
+  <div class="col-md-12">
+    <h3>Products In Your Cart:</h3>
+    <table class="table table-hover">
+      <%# render(@cart.line_items) %>
+      <% @cart.line_items.each do |item| %>
+		<tr>
+			<td><%= item.quantity %>&times;</td>
+			<td><%= item.product.name %></td>
+			<td><%= number_to_currency(item.total_price) %></td>
+		</tr>
+	<% end %>
+
+      <tr class="total_line">
+        <td colspan="2">Total <small>(+GST 5%)</small></td>
+        <td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
+      </tr>
+    </table>
+  </div><!-- end -->
+</div><!-- end row -->
+
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%# f.button :submit %>
   </div>
 <% end %>
+</div>

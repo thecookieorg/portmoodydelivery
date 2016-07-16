@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :merchants
+  has_many :orders
 
   mount_uploader :avatar, AvatarUploader
 end

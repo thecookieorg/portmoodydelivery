@@ -1,6 +1,10 @@
 class Order < ActiveRecord::Base
 	has_many :line_items, dependent: :destroy
 
+	belongs_to :user
+
+	attr_accessor :stripe_card_token
+
 	PAYMENT_TYPES = [ "Cash", "Credit card" ]
 	validates :pay_type, inclusion: PAYMENT_TYPES
 
