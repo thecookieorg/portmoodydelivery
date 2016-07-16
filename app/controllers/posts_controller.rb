@@ -7,11 +7,16 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @page_title = "Blog Posts"
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post          = Post.friendly.find params[:id]
+    @page_title       = @post.title
+    @page_description = @post.body
+    @page_keywords    = @post.keywords
   end
 
   # GET /posts/new
@@ -71,6 +76,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :bimage)
+      params.require(:post).permit(:title, :body, :bimage, :keywords)
     end
 end
