@@ -1,4 +1,4 @@
-<nav class="navbar navbar-orange">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
@@ -33,9 +33,9 @@
 	          </ul>
 	        </li>
 		<% else %>
-		  <li>
-		  <%= link_to('Login', new_user_session_path)  %>  
-		  </li>
+		  <li><%= link_to('Login', new_user_session_path) %></li>
+		  <li><%= link_to('Signup', new_user_registration_path) %></li>
+		  <li><%= link_to('Help', '#') %></li>
 		<% end %>
       </ul>
     </div>

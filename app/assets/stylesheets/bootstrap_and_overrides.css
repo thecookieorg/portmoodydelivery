@@ -10,7 +10,7 @@
   	background: #DD3E06;
   }
 
-  .navbar-orange a.dropdown-toggle {
+  .navbar-inverse a.dropdown-toggle {
   	color: #fff;
   }
 
@@ -21,3 +21,63 @@ ul.nav a:hover { color: #fff !important; background-color: #DD3E06 !important; }
   	color: #DD3E06;
   	border-color: #fff;
   }
+
+body, html {
+  height: 100%;
+}
+
+
+.wide {
+  width:100%;
+  height:100%;
+  height:calc(100% - 1px);
+  background-image:url('http://res.cloudinary.com/manoylo/image/upload/v1467836562/header-main-image-min_mbupxg.png');
+  background-size:cover;
+}
+
+.wide img {
+  width:100%;
+}
+
+.logo {
+  color:#fff;
+  font-weight:800;
+  font-size:14pt;
+  padding:25px;
+  text-align:center;
+  margin-top: 20px;
+}
+
+.line {
+  padding-top:20px;
+  white-space:no-wrap;
+  overflow:hidden;
+  text-align:center;
+}
+
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 0px;
+  width: auto;
+}
+
+.navbar-inverse {
+    background-color: #DD3E06;
+    border-bottom: 3px solid #8b2528;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #8b2528;
+}
+
+.navbar {
+  margin-bottom: 0px;
+  border-radius: 0px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: #fff;
+}
