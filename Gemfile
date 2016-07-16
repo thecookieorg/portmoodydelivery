@@ -30,6 +30,7 @@ gem 'cancancan', '~> 1.10'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'cloudinary'
+gem 'friendly_id', '~> 5.1.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
