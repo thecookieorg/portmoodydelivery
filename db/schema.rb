@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160716132447) do
+ActiveRecord::Schema.define(version: 20160716142410) do
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -41,6 +46,16 @@ ActiveRecord::Schema.define(version: 20160716132447) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
+  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
 
   create_table "merchants", force: :cascade do |t|
     t.string   "name"
@@ -78,7 +93,10 @@ ActiveRecord::Schema.define(version: 20160716132447) do
     t.datetime "updated_at",                                   null: false
     t.text     "description"
     t.string   "pimage"
+    t.integer  "merchant_id"
   end
+
+  add_index "products", ["merchant_id"], name: "index_products_on_merchant_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

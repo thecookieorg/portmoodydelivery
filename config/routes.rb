@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :line_items
+  resources :carts
   mount Ckeditor::Engine => '/ckeditor'
   resources :products
   resources :merchants

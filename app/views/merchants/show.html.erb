@@ -10,5 +10,13 @@
   <%= image_tag @merchant.logo.large.url %>
 </p>
 
+<p>
+	Products:
+	<% @products.each do |product| %>
+		<%= product.name %>
+		<%= product.price %>
+	<% end %>
+</p>
+
 <%= link_to 'Edit', edit_merchant_path(@merchant) %> |
 <%= link_to 'Back', merchants_path %>

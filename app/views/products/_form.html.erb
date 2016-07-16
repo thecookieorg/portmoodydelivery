@@ -8,6 +8,10 @@
     <%= f.file_field :pimage, required: false, class: "form-control" %><br>
     <%= f.input :price %>
     <%= f.input :special_instructions %>
+    <div class="field">
+      <%= f.label :merchant_id %>
+      <%= f.collection_select :merchant_id, Merchant.all, :id, :name %>
+    </div>
   </div>
 
   <div class="form-actions">
