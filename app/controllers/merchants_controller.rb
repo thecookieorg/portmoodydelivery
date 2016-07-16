@@ -1,6 +1,7 @@
 class MerchantsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :set_merchant, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /merchants
   # GET /merchants.json
@@ -70,6 +71,6 @@ class MerchantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def merchant_params
-      params.require(:merchant).permit(:name, :logo)
+      params.require(:merchant).permit(:name, :about, :logo)
     end
 end
