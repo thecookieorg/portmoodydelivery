@@ -1,15 +1,15 @@
 # encoding: utf-8
 
-class PimageUploader < CarrierWave::Uploader::Base
+class BimageUploader < CarrierWave::Uploader::Base
 
   include Cloudinary::CarrierWave
   
-  process :tags => ["products_image"]
+  process :tags => ["blog_image"]
   process :convert => "jpg"
 
   version :large do
     eager
-    resize_to_fit(600, 400)
+    resize_to_fit(1920, 500)
     cloudinary_transformation :quality => 80
   end
 

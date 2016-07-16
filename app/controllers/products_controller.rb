@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /products
   # GET /products.json
@@ -69,6 +71,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :image, :price, :special_instructions)
+      params.require(:product).permit(:name, :description, :pimage, :price, :special_instructions)
     end
 end
