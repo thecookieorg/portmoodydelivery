@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
       return
     end
 
-    @order = Order.new
+    @order = current_user.orders.build
   end
 
   # GET /orders/1/edit
@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = current_user.orders.build(order_params)
     @order.add_line_items_from_cart(@cart)
 
     # STRIPE INTEGRATION
