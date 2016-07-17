@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :products
   resources :merchants
   get 'pages/index'
+  get '/help' => 'pages#help'
 
   resources :posts
   devise_for :users, :controllers => { registrations: 'registrations' }
