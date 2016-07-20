@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class OrdersController < ApplicationController
   include CurrentCart
   before_action :authenticate_user!
@@ -23,6 +25,24 @@ class OrdersController < ApplicationController
     end
 
     @order = current_user.orders.build
+
+    $items = []
+
+    @cart.line_items.each do |line_item|
+      item_hash = {
+          :quantity => line_item.quantity,
+          :name => "#{line_item.product.name}",
+      }
+      $items.push(item_hash)
+    end
+
+    $message_body = $items.to_a
+
+    #$items.each do |key, val|
+    #  "#{key}: #{val}\n"
+    #end
+
+
   end
 
   # GET /orders/1/edit
@@ -53,6 +73,8 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+
+        send_text_message
         
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
@@ -99,5 +121,21 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:pay_type, :stripeEmail, :stripeToken, :stripe_card_token, :product_id)
+    end
+
+    def send_text_message
+      number_to_send_to = '+16043568259'
+
+      twilio_sid = ENV["twilio_sid"]
+      twilio_token = ENV["twilio_token"]
+      twilio_phone_number = "604-265-5481"
+
+      @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
+
+      @twilio_client.account.sms.messages.create(
+          from: "+1 #{twilio_phone_number}",
+          to: number_to_send_to,
+          body: $message_body[0]
+        )
     end
 end

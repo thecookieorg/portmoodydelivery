@@ -6,26 +6,39 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
+
   .navbar-orange {
-  	background: #DD3E06;
+  	background: #cc343e;
   }
 
   .navbar-inverse a.dropdown-toggle {
   	color: #fff;
   }
 
-ul.nav a:hover { color: #fff !important; background-color: #DD3E06 !important; }
+ul.nav a:hover { color: #fff !important; background-color: #cc343e !important; }
 
 .nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
   	background-color: #fff;
-  	color: #DD3E06;
+  	color: #cc343e;
   	border-color: #fff;
   }
 
 body, html {
   height: 100%;
+  font-family: 'Open Sans', sans-serif;
 }
 
+hr.style-two {
+    border: 3px solid #d72c42;
+    width: 45px;
+}
+
+.heading-font {
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
 
 .wide {
   width:100%;
@@ -65,7 +78,7 @@ body, html {
 }
 
 .navbar-inverse {
-    background-color: #DD3E06;
+    background-color: #cc343e;
     border-bottom: 3px solid #8b2528;
 }
 
@@ -80,4 +93,15 @@ body, html {
 
 .navbar-inverse .navbar-nav>li>a {
   color: #fff;
+}
+
+#circle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #d82d43;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  left:50%;
 }

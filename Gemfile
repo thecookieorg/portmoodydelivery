@@ -36,6 +36,7 @@ gem 'ckeditor'
 gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
 gem 'figaro'
 gem 'font-awesome-rails'
+gem 'twilio-ruby', '~> 4.11.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
